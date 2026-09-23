@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Your Name | Thumbnail Designer</title>
+  <meta name="description" content="Premium YouTube Thumbnail Designer Portfolio">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #080808;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 18px 6%;
+      background: rgba(8, 8, 8, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: #ff3d71;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      color: #bdbdbd;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 130px 6% 80px;
+      background:
+        radial-gradient(circle at 80% 30%, rgba(255,61,113,0.18), transparent 30%),
+        radial-gradient(circle at 20% 70%, rgba(90,70,255,0.15), transparent 30%);
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50px;
+      color: #ff668f;
+      font-size: 13px;
+      margin-bottom: 22px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 82px);
+      line-height: 0.98;
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #ff3d71;
+    }
+
+    .hero p {
+      max-width: 560px;
+      color: #a7a7a7;
+      font-size: 18px;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 13px 22px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #ff3d71;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255,61,113,0.25);
+    }
+
+    .btn-secondary {
+      border: 1px solid #333;
+      color: #ddd;
+    }
+
+    .btn-secondary:hover {
+      background: #151515;
+    }
+
+    /* HERO VISUAL */
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card {
+      padding: 10px;
+      background: #141414;
+      border: 1px solid #292929;
+      border-radius: 18px;
+      transform: rotate(2deg);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+
+    .hero-card img {
+      border-radius: 12px;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    .floating-card {
+      position: absolute;
+      bottom: -25px;
+      left: -30px;
+      padding: 15px 18px;
+      background: #181818;
+      border: 1px solid #303030;
+      border-radius: 12px;
+      font-size: 13px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+
+    .floating-card strong {
+      display: block;
+      font-size: 20px;
+      color: #ff3d71;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 100px 6%;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      margin-bottom: 45px;
+    }
+
+    .section-title small {
+      color: #ff3d71;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .section-title h2 {
+      font-size: clamp(35px, 5vw, 55px);
+      margin-top: 8px;
+      letter-spacing: -2px;
+    }
+
+    .section-title p {
+      color: #888;
+      max-width: 600px;
+      margin-top: 12px;
+    }
+
+    /* FILTER */
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .filter-btn {
+      padding: 9px 17px;
+      border-radius: 50px;
+      border: 1px solid #292929;
+      background: #111;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: #ff3d71;
+      color: white;
+      border-color: #ff3d71;
+    }
+
+    /* PORTFOLIO */
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .portfolio-item {
+      background: #121212;
+      border: 1px solid #242424;
+      border-radius: 14px;
+      overflow: hidden;
+      transition: 0.35s;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-7px);
+      border-color: #444;
+    }
+
+    .thumbnail {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thumbnail img {
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .work-info {
+      padding: 16px;
+    }
+
+    .work-info h3 {
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .work-info p {
+      font-size: 13px;
+      color: #777;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-box {
+      padding: 35px;
+      border: 1px solid #252525;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #141414, #0d0d0d);
+    }
+
+    .about-box h3 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .about-box p {
+      color: #999;
+      margin-bottom: 18px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 8px 13px;
+      border-radius: 8px;
+      background: #1c1c1c;
+      color: #bbb;
+      font-size: 13px;
+    }
+
+    /* SERVICES */
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service {
+      padding: 30px;
+      background: #111;
+      border: 1px solid #242424;
+      border-radius: 15px;
+      transition: 0.3s;
+    }
+
+    .service:hover {
+      transform: translateY(-5px);
+      border-color: #ff3d71;
+    }
+
+    .service-number {
+      color: #ff3d71;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    .service h3 {
+      margin-bottom: 10px;
+    }
+
+    .service p {
+      color: #777;
+      font-size: 14px;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      text-align: center;
+      padding-bottom: 120px;
+    }
+
+    .contact-box {
+      max-width: 850px;
+      margin: auto;
+      padding: 60px 30px;
+      border: 1px solid #292929;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top, rgba(255,61,113,0.15), transparent 45%),
+        #111;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(35px, 5vw, 58px);
+      margin-bottom: 15px;
+    }
+
+    .contact-box p {
+      color: #888;
+      margin-bottom: 28px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid #1e1e1e;
+      padding: 25px 6%;
+      color: #666;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-container,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 130px;
+      }
+
+      .hero-visual {
+        max-width: 600px;
+        margin: auto;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+
+      section {
+        padding: 75px 5%;
+      }
+
+      .hero {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      .hero h1 {
+        font-size: 50px;
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-card {
+        left: 10px;
+      }
+
+      .about-box {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <div class="nav-container">
+
+      <a href="#" class="logo">
+        YOUR<span>NAME.</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="hero">
+
+    <div class="hero-container">
+
+      <div class="hero-content">
+
+        <div class="badge">
+          THUMBNAIL DESIGNER
+        </div>
+
+        <h1>
+          Thumbnails<br>
+          That <span>Get Attention.</span>
+        </h1>
+
+        <p>
+          I create bold, engaging and high-click-potential
+          YouTube thumbnails designed to make viewers stop scrolling.
+        </p>
+
+        <div class="buttons">
+
+          <a href="#work" class="btn btn-primary">
+            View My Work →
+          </a>
+
+          <a href="#contact" class="btn btn-secondary">
+            Let's Work Together
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-visual">
+
+        <div class="hero-card">
+
+          <!-- Replace this image -->
+
+          <img
+            src="https://placehold.co/1280x720/151515/ffffff?text=YOUR+BEST+THUMBNAIL"
+            alt="Featured Thumbnail">
+
+        </div>
+
+        <div class="floating-card">
+          <strong>50+</strong>
+          Designs Created
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- PORTFOLIO -->
+
+  <section id="work">
+
+    <div class="section-container">
+
+      <div class="section-title">
+
+        <small>Selected Work</small>
+
+        <h2>My Portfolio</h2>
+
+        <p>
+          A selection of thumbnails created for different
+          content styles and audiences.
+        </p>
+
+      </div>
+
+
+      <div class="filters">
+
+        <button class="filter-btn active" onclick="filterWork('all')">
+          All
+        </button>
+
+        <button class="filter-btn" onclick="filterWork('youtube')">
+          YouTube
+        </button>
+
+        <button class="filter-btn" onclick="filterWork('gaming')">
+          Gaming
+        </button>
+
+        <button class="filter-btn" onclick="filterWork('story')">
+          Storytelling
+        </button>
+
+        <button class="filter-btn" onclick="filterWork('sports')">
+          Sports
+        </button>
+
+      </div>
+
+
+      <div class="portfolio-grid">
+
+
+        <!-- PROJECT 1 -->
+
+        <div class="portfolio-item" data-category="youtube">
+
+          <div class="thumbnail">
+
+            <img
+              src="https://placehold.co/1280x720/191919/ffffff?text=THUMBNAIL+01"
+              alt="YouTube Thumbnail">
+
+          </div>
+
+          <div class="work-info">
+
+            <h3>High CTR YouTube Thumbnail</h3>
+
+            <p>YouTube • Entertainment</p>
+
+          </div>
+
+        </div>
+
+
+        <!-- PROJECT 2 -->
+
+        <div class="portfolio-item" data-category="gaming">
+
+          <div class="thumbnail">
+
+            <img
+              src="https://placehold.co/1280x720/202020/ffffff?text=THUMBNAIL+02"
+              alt="Gaming Thumbnail">
+
+          </div>
+
+          <div class="work-info">
+
+            <h3>Gaming Thumbnail</h3>
+
+            <p>Gaming • YouTube</p>
+
+          </div>
+
+        </div>
+
+
+        <!-- PROJECT 3 -->
+
+        <div class="portfolio-item" data-category="story">
+
+          <div class="thumbnail">
+
+            <img
+              src="https://placehold.co/1280x720/181818/ffffff?text=THUMBNAIL+03"
+              alt="Storytelling Thumbnail">
+
+          </div>
+
+          <div class="work-info">
+
+            <h3>Storytelling Thumbnail</h3>
+
+            <p>Storytelling • YouTube</p>
+
+          </div>
+
+        </div>
+
+
+        <!-- PROJECT 4 -->
+
+        <div class="portfolio-item" data-category="sports">
+
+          <div class="thumbnail">
+
+            <img
+              src="https://placehold.co/1280x720/222222/ffffff?text=THUMBNAIL+04"
+              alt="Sports Thumbnail">
+
+          </div>
+
+          <div class="work-info">
+
+            <h3>Sports Thumbnail</h3>
+
+            <p>Sports • Entertainment</p>
+
+          </div>
+
+        </div>
+
+
+        <!-- PROJECT 5 -->
+
+        <div class="portfolio-item" data-category="youtube">
+
+          <div class="thumbnail">
+
+            <img
+              src="https://placehold.co/1280x720/171717/ffffff?text=THUMBNAIL+05"
+              alt="YouTube Thumbnail">
+
+          </div>
+
+          <div class="work-info">
+
+            <h3>Bold YouTube Design</h3>
+
+            <p>YouTube • Creator</p>
+
+          </div>
+
+        </div>
+
+
+        <!-- PROJECT 6 -->
+
+        <div class="portfolio-item" data-category="story">
+
+          <div class="thumbnail">
+
+            <img
+              src="https://placehold.co/1280x720/1d1d1d/ffffff?text=THUMBNAIL+06"
+              alt="Story Thumbnail">
+
+          </div>
+
+          <div class="work-info">
+
+            <h3>Story Based Thumbnail</h3>
+
+            <p>Storytelling • Creator</p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="section-container">
+
+      <div class="about-grid">
+
+        <div class="section-title">
+
+          <small>About Me</small>
+
+          <h2>Designing for the first impression.</h2>
+
+        </div>
+
+
+        <div class="about-box">
+
+          <h3>Hi, I'm Your Name.</h3>
+
+          <p>
+            I'm a thumbnail designer focused on creating
+            eye-catching visuals that communicate the idea
+            of a video instantly.
+          </p>
+
+          <p>
+            I focus on composition, typography, color,
+            facial expressions and visual storytelling.
+          </p>
+
+          <div class="skills">
+
+            <span class="skill">Thumbnail Design</span>
+            <span class="skill">Canva</span>
+            <span class="skill">Photoshop</span>
+            <span class="skill">Photopea</span>
+            <span class="skill">Typography</span>
+            <span class="skill">Visual Design</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SERVICES -->
+
+  <section id="services">
+
+    <div class="section-container">
+
+      <div class="section-title">
+
+        <small>What I Do</small>
+
+        <h2>My Services</h2>
+
+      </div>
+
+
+      <div class="services">
+
+        <div class="service">
+
+          <div class="service-number">01</div>
+
+          <h3>YouTube Thumbnails</h3>
+
+          <p>
+            Attention-grabbing thumbnails designed
+            specifically for YouTube creators.
+          </p>
+
+        </div>
+
+
+        <div class="service">
+
+          <div class="service-number">02</div>
+
+          <h3>Thumbnail Redesign</h3>
+
+          <p>
+            Improving an existing thumbnail with
+            stronger composition, text and visuals.
+          </p>
+
+        </div>
+
+
+        <div class="service">
+
+          <div class="service-number">03</div>
+
+          <h3>Custom Graphics</h3>
+
+          <p>
+            Custom visual designs for creators,
+            social media and digital content.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact" class="contact">
+
+    <div class="section-container">
+
+      <div class="contact-box">
+
+        <h2>Have a video?</h2>
+
+        <p>
+          Let's create a thumbnail that makes people
+          want to click.
+        </p>
+
+        <!-- Change these links -->
+
+        <div class="buttons" style="justify-content:center;">
+
+          <a
+            href="https://wa.me/91XXXXXXXXXX"
+            class="btn btn-primary">
+            WhatsApp Me
+          </a>
+
+          <a
+            href="mailto:youremail@example.com"
+            class="btn btn-secondary">
+            Email Me
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 Your Name. Thumbnail Designer.
+
+  </footer>
+
+
+  <!-- FILTER JAVASCRIPT -->
+
+  <script>
+
+    function filterWork(category) {
+
+      const items =
+        document.querySelectorAll(".portfolio-item");
+
+      const buttons =
+        document.querySelectorAll(".filter-btn");
+
+
+      buttons.forEach(button => {
+        button.classList.remove("active");
+      });
+
+
+      event.target.classList.add("active");
+
+
+      items.forEach(item => {
+
+        if (
+          category === "all" ||
+          item.dataset.category === category
+        ) {
+
+          item.style.display = "block";
+
+        } else {
+
+          item.style.display = "none";
+
+        }
+
+      });
+
+    }
+
+  </script>
+
+</body>
+</html>
